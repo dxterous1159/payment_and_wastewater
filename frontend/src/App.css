@@ -7,7 +7,9 @@
   font-family: 'Lato', sans-serif;
 }
 
-.home,
+.home {
+  text-align: center;
+}
 .reports,
 .products,
 .team,
