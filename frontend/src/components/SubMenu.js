@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #e1e9fc;
+  color: #000;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -13,11 +13,12 @@ const SidebarLink = styled(Link)`
   text-decoration: none;
   font-size: 20px;
 
-  &:hover {
-    background: #252831;
-    border-left: 4px solid #632ce4;
+  &:hover ,:focus {
+    background: #dbeffe;
+    border-left: 4px solid #1c96eb;
     cursor: pointer;
   }
+
 `;
 
 const SidebarLabel = styled.span`
@@ -25,17 +26,19 @@ const SidebarLabel = styled.span`
 `;
 
 const DropdowLink = styled(Link)`
-    background: #414757;
+    background: #fff;
     height: 60px;
     padding-left: 3rem;
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #f5f5f5;
+    color: #000;
     font-size: 18px;
     
-    &:hover {
-    background: #632ce4;
+    &:hover ,:focus{
+    background: #dbeffe;
+    color: #1c96eb;
+    border-left: 4px solid #1c96eb;
     cursor: pointer;
   }
 `;
