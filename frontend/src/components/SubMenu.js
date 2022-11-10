@@ -9,13 +9,15 @@ const SidebarLink = styled(Link)`
   align-items: center;
   padding: 20px;
   list-style: none;
-  height: 60px;
+  height: 55px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
 
   &:hover ,:focus {
     background: #dbeffe;
-    border-left: 4px solid #1c96eb;
+    color: #1c96eb;
+    border-left: 6px solid #1c96eb;
     cursor: pointer;
   }
 
@@ -38,7 +40,7 @@ const DropdowLink = styled(Link)`
     &:hover ,:focus{
     background: #dbeffe;
     color: #1c96eb;
-    border-left: 4px solid #1c96eb;
+    border-left: 6px solid #1c96eb;
     cursor: pointer;
   }
 `;
