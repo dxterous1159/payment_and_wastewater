@@ -8,7 +8,9 @@
   /* font-family: 'Prompt','Sarabun',sans-serif; */
 }
 
-.home,
+.home {
+  text-align: center;
+}
 .reports,
 .products,
 .team,
