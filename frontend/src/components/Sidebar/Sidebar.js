@@ -6,7 +6,7 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
-import logo from "./images/logo.png";
+import logo from "../../images/logo.png";
 import DateTime from "./DateTime";
 
 const Nav = styled.div`
@@ -35,7 +35,7 @@ const NavIcon = styled(Link)`
 `;
 
 const SidebarNav = styled.nav`
-  background: #eee;
+  background: #f0f0f0;
   width: 300px;
   height: 100%;
   display: flex;
@@ -97,29 +97,29 @@ const Sidebar = () => {
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <>
+    <>   
       <IconContext.Provider value={{}}>
         <Nav>
-          <NavIcon to="#">
+          <NavIcon to="#" >
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
+        <SidebarNav sidebar={sidebar} onLoad={showSidebar}>
           <SidebarBanner>
             <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             <Logo>
               <LogoImg>
-                <img src={logo} width="140" height="140" />
+                <img src={logo} width="140" height="140" alt="" />
               </LogoImg>
             </Logo>
             <TextTitle>
               ยินดีต้อนรับเข้าสู่ <br />
               เทศบาลตำบลสันผักหวาน <br />
-              อ.หางดง จ.เชียงใหม่        
+              อ.หางดง จ.เชียงใหม่
             </TextTitle>
-            <DateTime />           
+            <DateTime />
           </SidebarBanner>
           <SidebarWrap>
             {SidebarData.map((item, index) => {

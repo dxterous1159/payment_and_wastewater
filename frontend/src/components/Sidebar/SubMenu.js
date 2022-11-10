@@ -9,18 +9,18 @@ const SidebarLink = styled(Link)`
   align-items: center;
   padding: 20px;
   list-style: none;
-  height: 55px;
+  height: 50px;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
 
-  &:hover ,:focus {
+  &:hover,
+  :focus {
     background: #dbeffe;
     color: #1c96eb;
     border-left: 6px solid #1c96eb;
     cursor: pointer;
   }
-
 `;
 
 const SidebarLabel = styled.span`
@@ -28,16 +28,17 @@ const SidebarLabel = styled.span`
 `;
 
 const DropdowLink = styled(Link)`
-    background: #fff;
-    height: 60px;
-    padding-left: 3rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    font-size: 18px;
-    
-    &:hover ,:focus{
+  background: #fff;
+  height: 60px;
+  padding-left: 3rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+
+  &:hover,
+  :focus {
     background: #dbeffe;
     color: #1c96eb;
     border-left: 6px solid #1c96eb;
@@ -46,9 +47,9 @@ const DropdowLink = styled(Link)`
 `;
 
 const SubMenu = ({ item }) => {
-    const [subnav, setSubnav ] = useState(false);
+  const [subnav, setSubnav] = useState(false);
 
-    const showSubnav = () => setSubnav(!subnav);
+  const showSubnav = () => setSubnav(!subnav);
 
   return (
     <>
@@ -58,21 +59,22 @@ const SubMenu = ({ item }) => {
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>
         <div>
-            {item.subNav && subnav 
-            ? item.iconOpened 
+          {item.subNav && subnav
+            ? item.iconOpened
             : item.subNav
             ? item.iconClosed
             : null}
         </div>
       </SidebarLink>
-      {subnav && item.subNav.map((item, index) => {
-        return(
-         <DropdowLink to={item.path} key={index}>
-            {item.icon}
-            <SidebarLabel>{item.title}</SidebarLabel>
-         </DropdowLink>  
-        )
-      })}
+      {subnav &&
+        item.subNav.map((item, index) => {
+          return (
+            <DropdowLink to={item.path} key={index}>
+              {item.icon}
+              <SidebarLabel>{item.title}</SidebarLabel>
+            </DropdowLink>
+          );
+        })}
     </>
   );
 };
