@@ -6,7 +6,7 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
-import logo from "../images/logo.png";
+import logo from "./images/logo.png";
 import DateTime from "./DateTime";
 
 const Nav = styled.div`
