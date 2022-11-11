@@ -21,28 +21,27 @@ const MenuTrigger = styled.div`
   overflow: hidden;
   cursor: pointer;
   background-color: #fff;
+  
 `;
 
 const UsernameTitle = styled.div`
-  background: #fff;
-  margin: 0 10px;
+  margin: 0 15px;
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #000;
-  font-size: 16px;
+  color: #fff;
+  font-size: 18px;
 `;
 
 const NavIcon = styled(Link)`
   margin-right: 10px;
+  height: 10px;
   font-size: 32px;
-  //height: 80px;
   justify-content: flex-start;
   align-items: center;
   color: #fff;
-  &:hover,
-  :focus {
-    color: #333;
+  &:hover{
+    color: #e5e5e5;
   }
 `;
 
@@ -57,30 +56,33 @@ const DropdownMenu = styled.div`
   right: 0;
   top: ${({ openProfile }) => (openProfile ? "0" : "-100%")};
   z-index: 10;
+  border-radius: 0 0 5px 5px;
 `;
-
 
 function ViewProfile() {
   const [openProfile, setOpenProfile] = useState(false);
   const showViewProfile = () => setOpenProfile(!openProfile);
-
+  let btnDropdown;
+    if (!openProfile) {
+      btnDropdown = <RiIcons.RiArrowDownSFill onClick={showViewProfile} />;
+    } else {
+      btnDropdown = <RiIcons.RiArrowUpSFill onClick={showViewProfile} />
+    }
   return (
     <NavIconRight>
       <MenuTrigger>
-        <img src={logo} />
+        <img src={logo} alt="uesrAvatar" width="40px" height="40px"/>
       </MenuTrigger>
       <UsernameTitle>
         <p>Firstname</p>
       </UsernameTitle>
-      <NavIcon>
-        <RiIcons.RiArrowDownSFill onClick={showViewProfile} />
+      <NavIcon>    
+        {btnDropdown}
       </NavIcon>
       <DropdownMenu openProfile={openProfile}>
         <ul>
           {ProfileData.map((item, index) => {
-            return (
-                    <ProfileMenu item={item} key={index} />
-            );
+            return <ProfileMenu item={item} key={index} />;
           })}
         </ul>
       </DropdownMenu>

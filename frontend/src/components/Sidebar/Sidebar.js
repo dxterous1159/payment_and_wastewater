@@ -46,6 +46,7 @@ const SidebarNav = styled.nav`
   left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 const SidebarWrap = styled.div`
@@ -117,9 +118,9 @@ const Sidebar = () => {
               </LogoImg>
             </Logo>
             <TextTitle>
-              ยินดีต้อนรับเข้าสู่ <br />
-              เทศบาลตำบลสันผักหวาน <br />
-              อ.หางดง จ.เชียงใหม่
+              <p>ยินดีต้อนรับเข้าสู่ </p>
+              <p>เทศบาลตำบลสันผักหวาน</p>
+              <p>อ.หางดง จ.เชียงใหม่</p>      
             </TextTitle>
             <DateTime />
           </SidebarBanner>
