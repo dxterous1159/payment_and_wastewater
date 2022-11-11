@@ -8,6 +8,7 @@ import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import logo from "../../images/logo.png";
 import DateTime from "./DateTime";
+import ViewProfile from "./ViewProfile";
 
 const Nav = styled.div`
   width: 100%;
@@ -103,6 +104,7 @@ const Sidebar = () => {
           <NavIcon to="#" >
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
+          <ViewProfile />
         </Nav>
         <SidebarNav sidebar={sidebar} onLoad={showSidebar}>
           <SidebarBanner>
