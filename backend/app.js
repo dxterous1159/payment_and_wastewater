@@ -30,7 +30,6 @@ app.use(cookieParser());
 const user = require("./routes/userRoute");
 
 app.use("/api/v1", user);
-
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
