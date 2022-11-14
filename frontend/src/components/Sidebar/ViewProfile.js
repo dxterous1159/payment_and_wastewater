@@ -5,7 +5,6 @@ import * as RiIcons from "react-icons/ri";
 import ProfileMenu from "./ProfileMenu";
 import { ProfileData } from "./ProfileData";
 import logo from "../../images/logo.png";
-import "../../App.css";
 
 const NavIconRight = styled.div`
   position: absolute;
@@ -21,7 +20,6 @@ const MenuTrigger = styled.div`
   overflow: hidden;
   cursor: pointer;
   background-color: #fff;
-  
 `;
 
 const UsernameTitle = styled.div`
@@ -40,7 +38,7 @@ const NavIcon = styled(Link)`
   justify-content: flex-start;
   align-items: center;
   color: #fff;
-  &:hover{
+  &:hover {
     color: #e5e5e5;
   }
 `;
@@ -63,30 +61,30 @@ function ViewProfile() {
   const [openProfile, setOpenProfile] = useState(false);
   const showViewProfile = () => setOpenProfile(!openProfile);
   let btnDropdown;
-    if (!openProfile) {
-      btnDropdown = <RiIcons.RiArrowDownSFill onClick={showViewProfile} />;
-    } else {
-      btnDropdown = <RiIcons.RiArrowUpSFill onClick={showViewProfile} />
-    }
+  if (!openProfile) {
+    btnDropdown = <RiIcons.RiArrowDownSFill onClick={showViewProfile} />;
+  } else {
+    btnDropdown = <RiIcons.RiArrowUpSFill onClick={showViewProfile} />;
+  }
   return (
-    <NavIconRight>
-      <MenuTrigger>
-        <img src={logo} alt="uesrAvatar" width="40px" height="40px"/>
-      </MenuTrigger>
-      <UsernameTitle>
-        <p>Firstname</p>
-      </UsernameTitle>
-      <NavIcon>    
-        {btnDropdown}
-      </NavIcon>
-      <DropdownMenu openProfile={openProfile}>
-        <ul>
-          {ProfileData.map((item, index) => {
-            return <ProfileMenu item={item} key={index} />;
-          })}
-        </ul>
-      </DropdownMenu>
-    </NavIconRight>
+    <>
+      <NavIconRight>
+        <MenuTrigger>
+          <img src={logo} alt="uesrAvatar" width="40px" height="40px" />
+        </MenuTrigger>
+        <UsernameTitle>
+          <p>Firstname</p>
+        </UsernameTitle>
+        <NavIcon>{btnDropdown}</NavIcon>
+        <DropdownMenu openProfile={openProfile}>
+          <ul>
+            {ProfileData.map((item, index) => {
+              return <ProfileMenu item={item} key={index} />;
+            })}
+          </ul>
+        </DropdownMenu>
+      </NavIconRight>
+    </>
   );
 }
 

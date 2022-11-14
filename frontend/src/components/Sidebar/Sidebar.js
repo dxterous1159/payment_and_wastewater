@@ -47,7 +47,13 @@ const SidebarNav = styled.nav`
   transition: 350ms;
   z-index: 10;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
+
+
 
 const SidebarWrap = styled.div`
   overflow-y: scroll;
@@ -74,6 +80,10 @@ const SidebarBanner = styled.div`
   background: #3187c3;
   width: 300px;
   height: 320px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Logo = styled.div`
@@ -99,7 +109,11 @@ const Sidebar = () => {
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <>   
+    <>
+         
+      
+
+
       <IconContext.Provider value={{}}>
         <Nav>
           <NavIcon to="#" >
@@ -131,6 +145,7 @@ const Sidebar = () => {
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
+
     </>
   );
 };

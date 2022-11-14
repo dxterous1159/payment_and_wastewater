@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import { isOpen } from "./Sdbar";
 const SidebarLink = styled(Link)`
   display: flex;
   color: #000;
@@ -54,7 +54,7 @@ const SubMenu = ({ item }) => {
   return (
     <>
       <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
-        <div>
+        <div style={{display: isOpen ? "block" : "none"}}>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>

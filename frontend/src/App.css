@@ -11,6 +11,7 @@
 .home {
   text-align: center;
 }
+
 .reports,
 .products,
 .team,
@@ -21,4 +22,14 @@
   justify-content: center;
   font-size: 3rem;
   background-color: aquamarine;
+}
+
+@media only screen and (max-width: 600px) {
+  .reports,
+  .products,
+  .team,
+  .reports{
+    overflow-x: hidden;
+    white-space: initial;
+}
 }
