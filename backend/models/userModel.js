@@ -65,98 +65,19 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
   },
-  myaddress: [
-    {
-      user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: true,
-      },
-      firstname: {
-        type: String,
-        required: true,
-      },
-      paymenttype: {
-        type: String,
-        required: true,
-      },
-      place: {
-        type: String,
-      },
-      homenumber: {
-        type: String,
-        required: true,
-      },
-      lane: {
-        type: String,
-      },
-      villageno: {
-        type: Number,
-        required: true,
-      },
-      road: {
-        type: String,
-      },
-      province: {
-        type: String,
-        required: true,
-      },
-      district: {
-        type: String,
-        required: true,
-      },
-      subdistrict: {
-        type: String,
-        required: true,
-      },
-      zipcode: {
-        type: String,
-        required: true,
-      },
-      myinstallment: [
-        {
-          user: {
-            type: mongoose.Schema.ObjectId,
-            ref: "User",
-            required: true,
-          }, 
-          trash: {
-            type: String,
-            required: true,
-          },
-          monthtrash: {
-            type: String,
-            required: true,
-          },
-          yeartrash: {
-            type: String,
-            required: true,
-          },
-          wastewater: {
-            type: String,
-            required: true,
-          },
-          monthwastewater: {
-            type: String,
-            required: true,
-          },
-          yearmonth: {
-            type: String,
-            required: true,
-          },
-          createdInstallmentAt: {
-            type: Date,
-            default: Date.now,
-          },
-        },
-      ],
-      createdAddressAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
-  
+  // myaddress: [
+  //   {
+  //     address: {
+  //       type: mongoose.Schema.ObjectId,
+  //       ref: "Address",
+  //       required: true,
+  //     }, 
+  //     identification: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //   },
+  // ],
   role: {
     type: String,
     default: "user",

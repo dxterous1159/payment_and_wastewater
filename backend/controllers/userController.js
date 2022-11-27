@@ -15,6 +15,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 //     crop: "scale",
 //   });
 
+
   const { titlename, firstname, lastname, identification, phone, jobtitle, email, password } = req.body;
 
   const user = await User.create({
@@ -238,136 +239,133 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Create New AddresUser or Update the AddresUser Admin - Employee
-exports.createAddresUser = catchAsyncErrors(async (req, res, next) => {
-  const { paymenttype,place,homenumber,lane,villageno,road,province,district,subdistrict,zipcode, userId } = req.body;
+// // Create New AddresUser or Update the AddresUser Admin - Employee
+// exports.createAddresUser = catchAsyncErrors(async (req, res, next) => {
+//   const { paymenttype,place,homenumber,lane,villageno,road,province,district,subdistrict,zipcode, userId } = req.body;
 
-  const addressUser = {
-    user: req.user._id,
-    firstname: req.user.firstname,
-    paymenttype,
-    place,
-    homenumber,
-    lane,
-    villageno: Number(villageno),
-    road,
-    province,
-    district,
-    subdistrict,
-    zipcode,
-  };
+//   const addressUser = {
+//     user: req.user._id,
+//     firstname: req.user.firstname,
+//     paymenttype,
+//     place,
+//     homenumber,
+//     lane,
+//     villageno: Number(villageno),
+//     road,
+//     province,
+//     district,
+//     subdistrict,
+//     zipcode,
+//   };
 
-  const user = await User.findById(userId);
+//   const address = await User.findById(userId);
 
-  user.myaddress.push(addressUser);
-
-
-  await user.save({ validateBeforeSave: false });
-
-  res.status(200).json({
-    success: true,
-  });
-});
-
-// Create New AddresUser or Update the AddresUser Admin - Employee
-exports.createInstallmenUser = catchAsyncErrors(async (req, res, next) => {
-  const { trash,monthtrash,yeartrash,wastewater,monthwastewater,yearmonth, addressId } = req.body;
-
-  const addressUser = {
-
-    user: req.user._id,
-    trash,
-    monthtrash,
-    yeartrash,
-
-    wastewater,
-    monthwastewater,
-    yearmonth,
-
-  };
-
-  const user = await User.findById(addressId);
-
-  user.myaddress[0].myinstallment.push(addressUser);
+//   address.myaddress.push(addressUser);
 
 
-  await user.save({ validateBeforeSave: false });
-
-  res.status(200).json({
-    success: true,
-  });
-});
-
-
-
-// Get All Review of a product
-exports.getUserAddress = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.findById(req.query.id);
-
-  if (!user) {
-    return next(new ErrorHander("User not found", 404));
-  }
-
-  res.status(200).json({
-    success: true,
-    myaddress: user.myaddress,
-  });
-});
-
-// Delete Address Admin - Employee
-exports.deleteAddress = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.findById(req.query.userId);
-
-  if (!user) {
-    return next(new ErrorHander("address not found", 404));
-  }
-
-
-  const myaddress = user.myaddress.filter(
-    (rev) => rev._id.toString() !== req.query.id.toString()
-  );
-
-
-  await User.findByIdAndUpdate(
-    req.query.userId,
-    {
-      myaddress,
-
-    },
-    {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    }
-  );
-
-  res.status(200).json({
-    success: true,
-  });
-});
-
-/*------------------------------------------------------------------------------------------------------------------------------- */
-
-// // Get All users (Admin, And Employee)
-// exports.getAlluser = catchAsyncErrors(async (req, res, next) => {
-//  // const users = await User.find();
-//   const usersCount = await User.countDocuments();
-//   const resultPerPage = 8;
-
-//   const apiFeature = new ApiFeatures(User.find(), req.query)
-//     .search()
-//     .filter()
-//    .pagination(resultPerPage); //Feature ใช้สำหรับการค้นหาข้อมูล
-
-//    let users = await apiFeature.query;
+//   await address.save({ validateBeforeSave: false });
 
 //   res.status(200).json({
 //     success: true,
-//     users,
-//     usersCount,
-//     resultPerPage,
 //   });
 // });
+
+// // Create New AddresUser or Update the AddresUser Admin - Employee
+// exports.createInstallmentUser = catchAsyncErrors(async (req, res, next) => {
+//   const { trash,monthtrash,yeartrash,wastewater,monthwastewater,yearmonth, userId } = req.body;
+
+//   const addressUser = {
+//     user: req.user._id,
+//     trash,
+//     monthtrash,
+//     yeartrash,
+
+//     wastewater,
+//     monthwastewater,
+//     yearmonth
+
+//   };
+
+//   const user = await User.findById(userId);
+
+//   user.myaddress[0].myinstallment.push(addressUser);
+
+
+//   await user.save({ validateBeforeSave: false });
+
+//   res.status(200).json({
+//     success: true,
+//   });
+// });
+
+// // Get All Review of a product
+// exports.getUserAddress = catchAsyncErrors(async (req, res, next) => {
+//   const user = await User.findById(req.query.id);
+
+//   if (!user) {
+//     return next(new ErrorHander("User not found", 404));
+//   }
+
+//   res.status(200).json({
+//     success: true,
+//     myaddress: user.myaddress,
+//   });
+// });
+
+// // Delete Address Admin - Employee
+// exports.deleteAddress = catchAsyncErrors(async (req, res, next) => {
+//   const user = await User.findById(req.query.userId);
+
+//   if (!user) {
+//     return next(new ErrorHander("address not found", 404));
+//   }
+
+
+//   const myaddress = user.myaddress.filter(
+//     (rev) => rev._id.toString() !== req.query.id.toString()
+//   );
+
+
+//   await User.findByIdAndUpdate(
+//     req.query.userId,
+//     {
+//       myaddress,
+
+//     },
+//     {
+//       new: true,
+//       runValidators: true,
+//       useFindAndModify: false,
+//     }
+//   );
+
+//   res.status(200).json({
+//     success: true,
+//   });
+// });
+
+/*------------------------------------------------------------------------------------------------------------------------------- */
+
+// Get All users (Admin, And Employee)
+exports.getAlluser = catchAsyncErrors(async (req, res, next) => {
+ // const users = await User.find();
+  const usersCount = await User.countDocuments();
+  const resultPerPage = 8;
+
+  const apiFeature = new ApiFeatures(User.find(), req.query)
+    .search()
+    .filter()
+   .pagination(resultPerPage); //Feature ใช้สำหรับการค้นหาข้อมูล
+
+   let users = await apiFeature.query;
+
+  res.status(200).json({
+    success: true,
+    users,
+    usersCount,
+    resultPerPage,
+  });
+});
 
 // Get User Detail
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
