@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { isOpen } from "./Sdbar";
+
 const SidebarLink = styled(Link)`
   display: flex;
   color: #000;
@@ -15,7 +15,7 @@ const SidebarLink = styled(Link)`
   font-weight: bold;
 
   &:hover,
-  :focus {
+  :focus,:active {
     background: #dbeffe;
     color: #1c96eb;
     border-left: 6px solid #1c96eb;
@@ -38,7 +38,7 @@ const DropdowLink = styled(Link)`
   font-size: 18px;
 
   &:hover,
-  :focus {
+  :focus,:active  {
     background: #dbeffe;
     color: #1c96eb;
     border-left: 6px solid #1c96eb;
@@ -54,7 +54,7 @@ const SubMenu = ({ item }) => {
   return (
     <>
       <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
-        <div style={{display: isOpen ? "block" : "none"}}>
+        <div>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>

@@ -110,10 +110,6 @@ const Sidebar = () => {
 
   return (
     <>
-         
-      
-
-
       <IconContext.Provider value={{}}>
         <Nav>
           <NavIcon to="#" >
@@ -145,7 +141,6 @@ const Sidebar = () => {
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
-
     </>
   );
 };

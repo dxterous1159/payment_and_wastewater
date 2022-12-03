@@ -5,7 +5,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Overview from './pages/Overview';
 import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import Axios from 'axios';
+import Footer from './components/footer/Footer';
+import styled from 'styled-components';
 
+const Gg = styled.div`
+  
+`;
 
 function App() {
   // const [data, setData] = useState(false)
@@ -22,9 +27,13 @@ function App() {
   // if(!data) {
   //   return <div />
   // }
+  
   return (
+
     <Router>
+
       <Sidebar />
+      
       <Switch>
         {/* <Route  path='/overview' exact component={Overview}  /> */}
         {/* <Route exact path='/overview'> <Overview  props={data}/></Route> */}
@@ -33,7 +42,14 @@ function App() {
         <Route path='/reports/reports2' exact component={ReportsTwo} />
         <Route path='/reports/reports3' exact component={ReportsThree} />
       </Switch>
+
+      <Footer/>
+
+   
+
     </Router>
+
+    
   );
 }
 
