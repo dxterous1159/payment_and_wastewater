@@ -1,7 +1,7 @@
-const Payment = require("../models/paymentModel");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const ApiFeatures = require("../utils/apifeatures");
-const ErrorHander = require("../utils/errorhander");
+const Payment = require("../../models/paymentModel");
+const catchAsyncErrors = require("../../middleware/catchAsyncErrors");
+const ApiFeatures = require("../../utils/apifeatures");
+const ErrorHander = require("../../utils/errorhander");
 
 // Ctreate Payment -- Admin
 exports.createPayment = catchAsyncErrors(async (req, res, next) => {

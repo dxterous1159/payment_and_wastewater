@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const addressSchema = new mongoose.Schema({
-    identification: {
-        type: String,
-        required: [true, "Please Enter Your Identification"],
-        trim: true,
-        maxLength: [13, "Identification cannot exceed 30 characters"],
-        minLength: [13, "Identification should have more than 4 characters"],
-    },
-    paymenttype: {
+  identification: {
+    type: String,
+    required: [true, "Please Enter Your Identification"],
+    trim: true,
+    maxLength: [13, "Identification cannot exceed 30 characters"],
+    minLength: [13, "Identification should have more than 4 characters"],
+  },
+  paymenttype: {
     type: String,
     required: true,
   },
@@ -45,56 +45,43 @@ const addressSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  datauser: [
-    {
-      name: {
-        type: String,
-        required: true,
-      },
-      user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: true,
-      }, 
-    },
-  ],
-  myinstallment: [
-    {
-      user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: true,
-      }, 
-      trash: {
-        type: String,
-        required: true,
-      },
-      monthtrash: {
-        type: String,
-        required: true,
-      },
-      yeartrash: {
-        type: String,
-        required: true,
-      },
-      wastewater: {
-        type: String,
-        required: true,
-      },
-      monthwastewater: {
-        type: String,
-        required: true,
-      },
-      yearmonth: {
-        type: String,
-        required: true,
-      },
-      createdInstallmentAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
+  // myinstallment: [
+  //   {
+  //     user: {
+  //       type: mongoose.Schema.ObjectId,
+  //       ref: "User",
+  //       required: true,
+  //     },
+  //     trash: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     monthtrash: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     yeartrash: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     wastewater: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     monthwastewater: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     yearmonth: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     createdInstallmentAt: {
+  //       type: Date,
+  //       default: Date.now,
+  //     },
+  //   },
+  // ],
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",

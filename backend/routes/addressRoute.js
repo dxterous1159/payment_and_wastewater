@@ -8,7 +8,8 @@ const {
   createInstallmentUser,
   getInstallmentAddress,
   deleteInstallment,
-} = require("../controllers/addressController");
+  myAddress,
+} = require("../controllers/address/addressController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 const router = express.Router();
@@ -39,19 +40,9 @@ router
     deleteAddress
   );
 
+  router.route("/address/me").get(isAuthenticatedUser, myAddress);
+
 /*------------------------------------------------------------------------------------------------------------------ */
 
-router
-  .route("/installment")
-  .put(
-    isAuthenticatedUser,
-    authorizeRoles("admin", "employee"),
-    createInstallmentUser
-  );
-
-router
-  .route("/installments")
-  .get(getInstallmentAddress)
-  .delete(isAuthenticatedUser, deleteInstallment);
 
 module.exports = router;

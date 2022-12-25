@@ -1,9 +1,9 @@
-const ErrorHander = require("../utils/errorhander");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const User = require("../models/userModel");
-const sendToken = require("../utils/jwtToken");
-const ApiFeatures = require("../utils/apifeatures");
-const sendEmail = require("../utils/sendEmail");
+const ErrorHander = require("../../utils/errorhander");
+const catchAsyncErrors = require("../../middleware/catchAsyncErrors");
+const User = require("../../models/userModel");
+const sendToken = require("../../utils/jwtToken");
+const ApiFeatures = require("../../utils/apifeatures");
+const sendEmail = require("../../utils/sendEmail");
 const crypto = require("crypto");
 //const cloudinary = require("cloudinary");
 
@@ -239,111 +239,6 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// // Create New AddresUser or Update the AddresUser Admin - Employee
-// exports.createAddresUser = catchAsyncErrors(async (req, res, next) => {
-//   const { paymenttype,place,homenumber,lane,villageno,road,province,district,subdistrict,zipcode, userId } = req.body;
-
-//   const addressUser = {
-//     user: req.user._id,
-//     firstname: req.user.firstname,
-//     paymenttype,
-//     place,
-//     homenumber,
-//     lane,
-//     villageno: Number(villageno),
-//     road,
-//     province,
-//     district,
-//     subdistrict,
-//     zipcode,
-//   };
-
-//   const address = await User.findById(userId);
-
-//   address.myaddress.push(addressUser);
-
-
-//   await address.save({ validateBeforeSave: false });
-
-//   res.status(200).json({
-//     success: true,
-//   });
-// });
-
-// // Create New AddresUser or Update the AddresUser Admin - Employee
-// exports.createInstallmentUser = catchAsyncErrors(async (req, res, next) => {
-//   const { trash,monthtrash,yeartrash,wastewater,monthwastewater,yearmonth, userId } = req.body;
-
-//   const addressUser = {
-//     user: req.user._id,
-//     trash,
-//     monthtrash,
-//     yeartrash,
-
-//     wastewater,
-//     monthwastewater,
-//     yearmonth
-
-//   };
-
-//   const user = await User.findById(userId);
-
-//   user.myaddress[0].myinstallment.push(addressUser);
-
-
-//   await user.save({ validateBeforeSave: false });
-
-//   res.status(200).json({
-//     success: true,
-//   });
-// });
-
-// // Get All Review of a product
-// exports.getUserAddress = catchAsyncErrors(async (req, res, next) => {
-//   const user = await User.findById(req.query.id);
-
-//   if (!user) {
-//     return next(new ErrorHander("User not found", 404));
-//   }
-
-//   res.status(200).json({
-//     success: true,
-//     myaddress: user.myaddress,
-//   });
-// });
-
-// // Delete Address Admin - Employee
-// exports.deleteAddress = catchAsyncErrors(async (req, res, next) => {
-//   const user = await User.findById(req.query.userId);
-
-//   if (!user) {
-//     return next(new ErrorHander("address not found", 404));
-//   }
-
-
-//   const myaddress = user.myaddress.filter(
-//     (rev) => rev._id.toString() !== req.query.id.toString()
-//   );
-
-
-//   await User.findByIdAndUpdate(
-//     req.query.userId,
-//     {
-//       myaddress,
-
-//     },
-//     {
-//       new: true,
-//       runValidators: true,
-//       useFindAndModify: false,
-//     }
-//   );
-
-//   res.status(200).json({
-//     success: true,
-//   });
-// });
-
 /*------------------------------------------------------------------------------------------------------------------------------- */
 
 // Get All users (Admin, And Employee)
@@ -364,6 +259,23 @@ exports.getAlluser = catchAsyncErrors(async (req, res, next) => {
     users,
     usersCount,
     resultPerPage,
+  });
+
+// const user = await User.aggregate([
+//   {
+//     $lookup: {
+//       from: 'Address',
+//       localField: 'addresses_data',
+//       foreignField: 'identification',
+//       as: 'addresses',
+//     }
+//   }
+// ]);
+
+  res.status(200).json({
+    success: true,
+    user,
+
   });
 });
 

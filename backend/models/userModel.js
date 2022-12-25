@@ -65,19 +65,6 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
   },
-  // myaddress: [
-  //   {
-  //     address: {
-  //       type: mongoose.Schema.ObjectId,
-  //       ref: "Address",
-  //       required: true,
-  //     }, 
-  //     identification: {
-  //       type: String,
-  //       required: true,
-  //     },
-  //   },
-  // ],
   role: {
     type: String,
     default: "user",
