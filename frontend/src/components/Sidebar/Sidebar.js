@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { SidebarData } from "./SidebarData";
+import { SidebarData , path} from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import logo from "../../images/logo.png";
@@ -12,7 +12,7 @@ import ViewProfile from "./ViewProfile";
 
 const Nav = styled.div`
   width: 100%;
-  background: #3187c3;
+  background: #63CEE5;  //#3187c3
   height: 60px;
   justify-content: flex-start;
   align-items: center;
@@ -117,7 +117,10 @@ const Sidebar = () => {
           </NavIcon>
           <ViewProfile />
         </Nav>
-        <SidebarNav sidebar={sidebar} onLoad={showSidebar}>
+        <SidebarNav sidebar={sidebar} onLoad ={showSidebar}> 
+
+        {/* onLoad={showSidebar} */}
+
           <SidebarBanner>
             <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />

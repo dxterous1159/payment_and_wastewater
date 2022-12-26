@@ -28,7 +28,7 @@ export const SidebarData = [
       },
       {
         title: "เพิ่มข้อมูลลูกหนี้",
-        path: "/reports/reports3",
+        path: "/registerDebtor",
         icon: <IoIcons.IoMdPersonAdd />,
       },
 
