@@ -1,9 +1,9 @@
-const ErrorHander = require("../utils/errorhander");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const User = require("../models/userModel");
-const sendToken = require("../utils/jwtToken");
-const ApiFeatures = require("../utils/apifeatures");
-const sendEmail = require("../utils/sendEmail");
+const ErrorHander = require("../../utils/errorhander");
+const catchAsyncErrors = require("../../middleware/catchAsyncErrors");
+const User = require("../../models/userModel");
+const sendToken = require("../../utils/jwtToken");
+const ApiFeatures = require("../../utils/apifeatures");
+const sendEmail = require("../../utils/sendEmail");
 const crypto = require("crypto");
 //const cloudinary = require("cloudinary");
 
@@ -14,6 +14,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 //     width: 150,
 //     crop: "scale",
 //   });
+
 
   const { titlename, firstname, lastname, identification, phone, jobtitle, email, password } = req.body;
 
@@ -218,7 +219,7 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-// Delete User -- Admin
+// Delete User -- Admin - Employee
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
@@ -258,6 +259,23 @@ exports.getAlluser = catchAsyncErrors(async (req, res, next) => {
     users,
     usersCount,
     resultPerPage,
+  });
+
+// const user = await User.aggregate([
+//   {
+//     $lookup: {
+//       from: 'Address',
+//       localField: 'addresses_data',
+//       foreignField: 'identification',
+//       as: 'addresses',
+//     }
+//   }
+// ]);
+
+  res.status(200).json({
+    success: true,
+    user,
+
   });
 });
 

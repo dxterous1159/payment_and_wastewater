@@ -1,17 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-function Overview({props}) {
+const Overview = () => {
   return (
     <div className='home'>
-      {
-        props.users.map((info, idx) => (
-          <div key={idx}>
-              <p>{info.firstname}</p>
-          </div>
-        ))
-      }
-      </div>
-  )
-}
+      <h1>Overview</h1>
+    </div>
+  );
+};
 
-export default Overview
+export default Overview;

@@ -28,8 +28,19 @@ app.use(cookieParser());
 
 // Route Import
 const user = require("./routes/userRoute");
+const address = require("./routes/addressRoute");
+const payment = require("./routes/paymentRoute");
+const month = require("./routes/monthRoute");
+const year = require("./routes/yearRoute");
+const installments = require("./routes/installmentsRoute");
 
 app.use("/api/v1", user);
+app.use("/api/v1", address);
+app.use("/api/v1", payment);
+app.use("/api/v1", month);
+app.use("/api/v1", year);
+app.use("/api/v1", installments);
+
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
